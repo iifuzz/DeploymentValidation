@@ -1,0 +1,85 @@
+<ValidationScript>
+	<Validate type="file">
+		<Files>
+			<File path="C:\TopoDOT\x64\bin\TopoDOTApp.dll" checksumVerification="true" expectedChecksum="abc123"/>
+			<File path="C:\TopoDOT\x64\mdlapps\TopoDOT.dll" checksumVerification="true" expectedChecksum="abc123"/>
+		</Files>
+		<Messages>
+			<Message key="initialize" text="Checking TopoDOT Installation..." type="normal"/>
+			<Message key="doesNotExist" text="ERROR: TopoDOT Not Installed." type="error"/>
+			<Message key="checksumFailed" text="ERROR: Invalid TopoDOT Version." type="error"/>
+			<Message key="success" text="Passed..." type="success"/>			
+		</Messages>
+	</Validate>
+	<Validate type="file">
+		<Files>
+			<File path="C:\TopoDOT\license.lic" checksumVerification="true" expectedChecksum="abc123"/>
+		</Files>
+		<Messages>
+			<Message key="initialize" text="Checking TopoDOT License..." type="normal"/>
+			<Message key="doesNotExist" text="ERROR: TopoDOT License Not Installed." type="error"/>
+			<Message key="checksumFailed" text="ERROR: Invalid TopoDOT License." type="error"/>
+			<Message key="success" text="Passed..." type="success"/>			
+		</Messages>
+	</Validate>
+	<Validate type="file">
+		<Files>
+			<File path="C:\Program Files\Bentley\MicroStation CONNECT Edition\MicroStation\microstation.exe" checksumVerification="false"/>
+		</Files>
+		<Messages>
+			<Message key="initialize" text="Checking Bentley Installation..." type="normal"/>
+			<Message key="doesNotExist" text="ERROR: No MicroStation Installed." type="error"/>
+			<Message key="success" text="Passed..." type="success"/>			
+		</Messages>
+	</Validate>
+	<Validate type="registry">
+		<Entries>
+			<Entry registryKey="LocalMachine" subkey="SOFTWARE\Bentley\Installed_Products\{39949BF5-7E21-4A7B-A640-6E7199B7D588}" key="Version" expectedValue="10.15.02.011"/>
+		</Entries>
+		<Messages>
+			<Message key="initialize" text="Checking Bentley Version..." type="normal"/>
+			<Message key="doesNotMatch" text="ERROR: Invalid MicroStation Version or No MicroStation Installed." type="error"/>
+			<Message key="success" text="Passed..." type="success"/>			
+		</Messages>
+	</Validate>
+	<Validate type="file">
+		<Files>
+			<File path="C:\Users\%USERNAME%\AppData\Local\Bentley\MicroStation\10.0.0\prefs\Personal.ucf" checksumVerification="true" expectedChecksum="abc123"/>
+			<File path="C:\Users\%USERNAME%\AppData\Local\Bentley\MicroStation\10.0.0\prefs\Personal.upf" checksumVerification="true" expectedChecksum="abc123"/>
+		</Files>
+		<Messages>
+			<Message key="initialize" text="Checking Bentley Configuration..." type="normal"/>
+			<Message key="doesNotExist" text="ERROR: No Bentley Configuration Installed." type="error"/>
+			<Message key="checksumFailed" text="ERROR: Wrong Bentley Configuration Installed" type="error"/>
+			<Message key="success" text="Passed..." type="success"/>			
+		</Messages>
+	</Validate>
+	
+	<Validate type="file">
+		<Files>
+			<File path="C:\Program Files (x86)\TopoDOT Global Project Admin\TopoDOTGlobalProjectAdmin.exe" checksumVerification="true" expectedChecksum="abc123"/>
+		</Files>
+		<Messages>
+			<Message key="initialize" text="Checking TopoCloud Installation..." type="normal"/>
+			<Message key="doesNotExist" text="ERROR: TopoCloud Not Installed." type="error"/>
+			<Message key="checksumFailed" text="ERROR: Wrong TopoCloud Configuration Installed" type="error"/>
+			<Message key="success" text="Passed..." type="success"/>			
+		</Messages>
+	</Validate>
+	
+	<Validate type="folderSize">
+		<Directories>
+			<Directory path="C:\Program Files (x86)\TopoDOT Global Project Admin\" expectedFileSize="123123"/>
+		</Directories>
+		<Messages>
+			<Message key="initialize" text="Checking Data... This may take a while..." type="normal"/>
+			<Message key="doesNotExist" text="ERROR: Data Directory Does Not Exist." type="error"/>
+			<Message key="fileSizeFailed" text="ERROR: Invalid File Size Detected" type="error"/>
+			<Message key="success" text="Passed..." type="success"/>			
+		</Messages>
+	</Validate>
+
+	<Create>
+		<Shortcut name="Shotcut" description="Video editing software" application="C:\Program Files\Shotcut\shotcut.exe"/>
+	</Create>
+</ValidationScript>

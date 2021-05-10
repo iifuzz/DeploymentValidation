@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8C69AA24-E418-4777-B082-70CCCEAB231F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DeploymentValidation</RootNamespace>
+    <AssemblyName>DeploymentValidation</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>DpgIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Colorify, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\dein.Colorify.2.4.0\lib\netstandard2.0\Colorify.dll</HintPath>
+    </Reference>
+    <Reference Include="CommandLine, Version=2.8.0.0, Culture=neutral, PublicKeyToken=5a870481e358d379, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.2.8.0\lib\net461\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Command Line\Options.cs" />
+    <Compile Include="Classes\Extensions\CommandLineExtensions.cs" />
+    <Compile Include="Classes\ValidationScript\Messages\Message.cs" />
+    <Compile Include="Classes\ValidationScript\Messages\MessageManager.cs" />
+    <Compile Include="Classes\ValidationScript\Messages\OperationMessages.cs" />
+    <Compile Include="Classes\ValidationScript\Operations\CreationOperation.cs" />
+    <Compile Include="Classes\ValidationScript\Operations\FolderSizeOperation.cs" />
+    <Compile Include="Classes\ValidationScript\Operations\Generators\IGenerator.cs" />
+    <Compile Include="Classes\ValidationScript\Operations\Generators\ShortcutGenerator.cs" />
+    <Compile Include="Classes\ValidationScript\Operations\IOperation.cs" />
+    <Compile Include="Classes\ValidationScript\Operations\OperationFactory.cs" />
+    <Compile Include="Classes\ValidationScript\Operations\FileOperation.cs" />
+    <Compile Include="Classes\ValidationScript\Operations\RegistryOperation.cs" />
+    <Compile Include="Classes\ValidationScript\Script.cs" />
+    <Compile Include="Classes\ValidationScript\Operations\Validators\FileValidator.cs" />
+    <Compile Include="Classes\ValidationScript\Operations\Validators\FolderSizeValidator.cs" />
+    <Compile Include="Classes\ValidationScript\Operations\Validators\IValidation.cs" />
+    <Compile Include="Classes\ValidationScript\Operations\Validators\RegistryValidator.cs" />
+    <Compile Include="Classes\ValidationScript\Operations\Validators\ShortcutValidator.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="any\any" />
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\Parsers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DpgIcon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
